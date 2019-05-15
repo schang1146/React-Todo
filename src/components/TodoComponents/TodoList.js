@@ -5,14 +5,7 @@ import React from 'react';
 import Todo from './Todo';
 import TodoForm from './TodoForm';
 
-const todo = [
-    {
-        task: 'Learn setState()',
-    },
-    {
-        task: 'Style my Todo List',
-    },
-];
+const todo = [];
 
 const defaultState = {
     todoList: todo,
