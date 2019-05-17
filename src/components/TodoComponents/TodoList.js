@@ -57,7 +57,7 @@ class TodoList extends React.Component {
     render() {
         return (
             <div>
-                <h2>Todo List: MVP</h2>
+                <h2>Todo List:</h2>
 
                 <div className='todo-list'>
                     {this.state.todo.map(todo => (
