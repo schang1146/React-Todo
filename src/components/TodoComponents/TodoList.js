@@ -7,17 +7,12 @@ import TodoForm from './TodoForm';
 
 const todo = [];
 
-const defaultState = {
-    todoList: todo,
-    task: '',
-    id: undefined,
-    completed: false,
-}
-
 class TodoList extends React.Component {
     constructor() {
         super();
-        this.state = defaultState;
+        this.state = {
+            todo
+        };
     }
 
     changeHandler = event => {
@@ -28,15 +23,35 @@ class TodoList extends React.Component {
         event.preventDefault();
         let newTodo = {
             task: this.state.task,
+            id: Date.now(),
+            completed: false,
         };
         this.setState({
-            todoList: [...this.state.todoList, newTodo],
+            todo: [...this.state.todo, newTodo],
             task: '',
+        });
+    };
+
+    toggleToDo = todoId => {
+        console.log('todoId: ', todoId);
+        this.setState({
+            todo: this.state.todo.map(todo => {
+                if (todoId === todo.id) {
+                    return {
+                        ...todo,
+                        completed: !todo.completed
+                    };
+                }
+                return todo;
+            })
         });
     };
 
     clearCompletedHandler = event => {
         event.preventDefault();
+        this.setState({
+            todo: this.state.todo.filter(todo => !todo.completed)
+        });
     };
 
     render() {
@@ -45,8 +60,8 @@ class TodoList extends React.Component {
                 <h2>Todo List: MVP</h2>
 
                 <div className='todo-list'>
-                    {this.state.todoList.map(todo => (
-                        <Todo todo={todo} />
+                    {this.state.todo.map(todo => (
+                        <Todo key={todo.id} todo={todo} toggleToDo={this.toggleToDo}/>
                     ))}
                 </div>
 
