@@ -12,10 +12,22 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, div, p, span {
-    color: #93867F;
+    color: #FFFFFF;
     font-family: 'Roboto', sans-serif;
 }
 
+.App {
+    max-width: 800px;
+    margin: 0 auto;
+    
+    text-align: center;
+}
+
+.todo-form {
+    margin: 25px 0;
+}
+
 .completed {
+    color: #93867F;
     text-decoration: line-through;
 }

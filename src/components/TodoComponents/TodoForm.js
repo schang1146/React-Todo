@@ -4,7 +4,7 @@ class TodoForm extends React.Component {
 
     render() {
         return (
-            <form onSubmit={this.props.addTodoHandler}>
+            <form className='todo-form' onSubmit={this.props.addTodoHandler}>
                 <input
                     type='text'
                     value={this.props.task}
